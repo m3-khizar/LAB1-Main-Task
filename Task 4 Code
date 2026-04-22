@@ -1,0 +1,35 @@
+/* Filename: LAB1 Task 4.cpp
+Author: Musa Khizar
+Date: 22/04/2026
+*/
+
+#include "mbed.h"   
+
+int main()
+{
+    // Initialise all three LEDs as digital output pins
+    DigitalOut led1(LED1);
+    DigitalOut led2(LED2);
+    DigitalOut led3(LED3);
+
+    //  PHASE 1: All three LEDs blink together 5 times 
+    for (int i = 0; i < 5; i++)
+    {
+        led1 = 1; led2 = 1; led3 = 1;  // Turn all LEDs on
+        ThisThread::sleep_for(200ms);   // Keep on for 200ms
+        led1 = 0; led2 = 0; led3 = 0;  // Turn all LEDs off
+        ThisThread::sleep_for(200ms);   // Keep off for 200ms
+    }
+    // Loop runs exactly 5 times then exits automatically
+
+    //  PHASE 2: LED1 stays on, LED2 and LED3 stay off 
+    led1 = 1;   // LED1 permanently on
+    led2 = 0;   // LED2 permanently off
+    led3 = 0;   // LED3 permanently off
+
+    // Idle loop — holds the state above forever
+    while (true)
+    {
+        ThisThread::sleep_for(1000ms);  // Nothing happens, just keeps running
+    }
+}
