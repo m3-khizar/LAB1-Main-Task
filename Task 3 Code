@@ -1,0 +1,32 @@
+/* Filename: LAB1 Task 3.cpp
+Author: Musa Khizar
+Date: 22/04/2026
+*/
+
+#include "mbed.h"   
+
+// Initialise all three LEDs as digital output pins
+DigitalOut led1(LED1);
+DigitalOut led2(LED2);
+DigitalOut led3(LED3);
+
+// Reusable function — turns one LED on for 200ms then off for 200ms
+void blink(DigitalOut& led)
+{
+    led = 1;                        // Turn LED on
+    ThisThread::sleep_for(200ms);   // Keep it on for 200ms
+    led = 0;                        // Turn LED off
+    ThisThread::sleep_for(200ms);   // Keep it off for 200ms
+}
+
+int main()
+{
+    while (true)
+    {
+        blink(led1);   // Step 1: LED1 on then off
+        blink(led2);   // Step 2: LED2 on then off
+        blink(led3);   // Step 3: LED3 on then off
+        blink(led2);   // Step 4: back to LED2
+        blink(led1);   // Step 5: back to LED1 — then repeats
+    }
+}
