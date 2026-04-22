@@ -1,0 +1,28 @@
+/* Filename: LAB1 Task 1.cpp
+Author: Musa Khizar
+Date: 22/04/2026
+*/
+
+#include "mbed.h"   
+
+// Define the blinking rate as 500 milliseconds
+#define BLINKING_RATE 500ms
+
+int main()
+{
+    // Initialise LED1, LED2 and LED3 as digital output pins
+    DigitalOut led1(LED1);
+    DigitalOut led2(LED2);
+    DigitalOut led3(LED3);
+
+    // Infinite loop — keeps the program running continuously
+    while (true)
+    {
+        led1 = !led1;   // Toggle LED1 (if ON turn OFF, if OFF turn ON)
+        led2 = !led2;   // Toggle LED2
+        led3 = !led3;   // Toggle LED3
+
+        // Pause execution for 500ms before next toggle
+        ThisThread::sleep_for(BLINKING_RATE);
+    }
+}
